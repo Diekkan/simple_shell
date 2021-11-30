@@ -9,6 +9,6 @@
 
 void shell_prompt(void);
 char* read_input(void);
-char** tokenizer(char *buffer);
+char** tokenizer(char *buffer, char *separator);
 
 #endif
