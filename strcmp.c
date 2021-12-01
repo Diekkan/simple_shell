@@ -8,11 +8,11 @@
  * Return: difference between ascii or 0
  */
 
-int _strcmp(char *s1, char *s2)
+int _strncmp(char *s1, char *s2, size_t n)
 {
 	int i;
 
-	for (i = 0; s1[i];)
+	for (i = 0; (s1[i]) && (i <= n);)
 	{
 		if (s1[i] != s2[i])
 			break;

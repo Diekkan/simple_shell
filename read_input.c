@@ -17,6 +17,8 @@ char* read_input(void)
 		printf("Pude leer: %lu caracter(es)\n", characters);
 		putchar(10);
 	}
+	else
+	{
 
 	return (buffer);
 }
