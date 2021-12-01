@@ -11,7 +11,7 @@ char** tokenizer(char *buffer, char *separator)
 	int i = 0;
 	char **tokenized;
 	char *token;
-
+	
 	token = strtok(buffer, separator);
 	tokenized = malloc(sizeof(char *) * 1024);
 
@@ -21,5 +21,8 @@ char** tokenizer(char *buffer, char *separator)
 		token = strtok(NULL, separator);
 		i++;
 	}
+
+	tokenized[i] = NULL;
+
 	return (tokenized);
 }

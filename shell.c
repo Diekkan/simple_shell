@@ -1,5 +1,5 @@
 #include "libshell.h"
-
+#define UNUSED(x) (void)(x)
 /**
  * main - our shell main function.
  *
@@ -7,29 +7,27 @@
  * Return: void.
  */
 
-int main(void)
+int main(int ac, char **av, char **env)
 {
 	char *input;
 	char **tokens;
 	int i;
-	int id, status;
 
-	do {
+	UNUSED(ac);
+	UNUSED(av);
+	UNUSED(env);
+
+	while (1)
+	{
 		shell_prompt();
 		input = read_input();
+		input[strlen(input) - 1] = '\0';
+
 		tokens = tokenizer(input, " ");
 
 		for (i = 0; tokens[i] != NULL; i++)
-			printf("%s\n", tokens[i]);
+			printf("Token:%s. No.:%d\n", tokens[i], i);
 
-		id = fork();
-
-		if (id == 0)
-		{
-		}
-		else
-		{
-			wait(&status);
-		}
-	} while (1);
+		run_exec(tokens);
+	}
 }
