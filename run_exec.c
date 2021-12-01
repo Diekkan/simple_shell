@@ -3,11 +3,12 @@
 int run_exec(char **token)
 {
 	int child_pid = fork();
-	int status;
+	int status, err;
 
 	if (child_pid == 0)
 	{	
-		if ((execve(token[0], token, NULL)) == -1)
+		err = execve(token[0], token, NULL);
+		if (err == -1)
 			perror("Error");
 	}
 

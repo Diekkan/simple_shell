@@ -7,6 +7,8 @@
 #include <unistd.h>
 #include <string.h>
 
+extern char **environ;
+
 void shell_prompt(void);
 char* read_input(void);
 char** tokenizer(char *buffer, char *separator);
