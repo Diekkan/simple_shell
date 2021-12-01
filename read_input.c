@@ -1,12 +1,15 @@
 #include "libshell.h"
-
-char* read_input(void)
+/**
+ *read_input - read input function used to read the input.
+ *Return: input.
+ */
+char *read_input(void)
 {
 	char *buffer;
 	size_t size = 1024;
-        size_t characters;
+	size_t characters;
 
-        buffer = malloc(size * sizeof(char));
+	buffer = malloc(size * sizeof(char));
 	if (buffer == NULL)
 		return (NULL);
 

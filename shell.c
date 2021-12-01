@@ -3,6 +3,8 @@
 /**
  * main - our shell main function.
  *
+ *
+ * Return: void.
  */
 
 int main(int ac, char **av, char **env)
@@ -12,8 +14,8 @@ int main(int ac, char **av, char **env)
 	int i;
 
 	UNUSED(ac);
-        UNUSED(av);
-        UNUSED(env);
+	UNUSED(av);
+	UNUSED(env);
 
 	while (1)
 	{
@@ -25,7 +27,7 @@ int main(int ac, char **av, char **env)
 
 		for (i = 0; tokens[i] != NULL; i++)
 			printf("Token:%s. No.:%d\n", tokens[i], i);
-		
+
 		run_exec(tokens);
 	}
 }
