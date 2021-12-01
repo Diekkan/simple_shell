@@ -3,6 +3,8 @@
 /**
  * main - our shell main function.
  *
+ *
+ * Return: void.
  */
 
 int main(void)
@@ -12,17 +14,16 @@ int main(void)
 	int i;
 	int id, status;
 
-	do
-	{
+	do {
 		shell_prompt();
 		input = read_input();
 		tokens = tokenizer(input, " ");
-		
+
 		for (i = 0; tokens[i] != NULL; i++)
 			printf("%s\n", tokens[i]);
 
 		id = fork();
-		
+
 		if (id == 0)
 		{
 		}
@@ -30,5 +31,5 @@ int main(void)
 		{
 			wait(&status);
 		}
-	}while (1);
+	} while (1);
 }

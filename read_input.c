@@ -1,14 +1,14 @@
 #include "libshell.h"
 
-char* read_input(void)
+char *read_input(void)
 {
 	char *buffer;
 	size_t size = 1024;
-        size_t characters;
-        int mypid = getpid();
-        int myppid = getppid();
+	size_t characters;
+	int mypid = getpid();
+	int myppid = getppid();
 
-        buffer = malloc(size * sizeof(char));
+	buffer = malloc(size * sizeof(char));
 	if (buffer == NULL)
 		return (NULL);
 

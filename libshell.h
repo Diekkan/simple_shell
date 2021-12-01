@@ -7,8 +7,12 @@
 #include <unistd.h>
 #include <string.h>
 
+extern char **environ;
+
 void shell_prompt(void);
 char* read_input(void);
 char** tokenizer(char *buffer, char *separator);
+int _strcmp(char *s1, char *s2);
+int run_exec(char **token);
 
 #endif
