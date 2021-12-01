@@ -1,6 +1,6 @@
 #include "libshell.h"
 
-char *find_exec(char *token)
+char *find_exec(char *exec)
 {
-
+	
 }

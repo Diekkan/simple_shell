@@ -21,13 +21,14 @@ int main(int ac, char **av, char **env)
 	{
 		shell_prompt();
 		input = read_input();
-		input[strlen(input) - 1] = '\0';
 
-		tokens = tokenizer(input, " ");
+			input[strlen(input) - 1] = '\0';
 
-		for (i = 0; tokens[i] != NULL; i++)
+			tokens = tokenizer(input, " ");
+
+			for (i = 0; tokens[i] != NULL; i++)
 			printf("Token:%s. No.:%d\n", tokens[i], i);
 
-		run_exec(tokens);
+			run_exec(tokens);
 	}
 }

@@ -8,7 +8,7 @@
  * Return: difference between ascii or 0
  */
 
-int _strncmp(char *s1, char *s2, size_t n)
+int _strncmp(char *s1, char *s2, int n)
 {
 	int i;
 
