@@ -3,7 +3,7 @@
 
 char *_getenv(const char *name);
 char **tokenize_path(void);
-path_d **token_to_list(char **tokens);
+path_d *token_to_list(char **tokens);
 path_d *add_node(path_d **head, char *str);
 
 /**
@@ -11,21 +11,18 @@ path_d *add_node(path_d **head, char *str);
  *
  * Return: Always 0.
  */
-int main(void)
+/* int main(void)
 {
 	char **tokenized;
 	unsigned int i;
 	tokenized = malloc(sizeof(char *) * 1024);
 	tokenized = tokenize_path();
-	token_to_list(tokenized);
-	for(i = 0; i < 1024; i++)
-	{
-		free(tokenized[i]);
-	}
 
-	free(tokenized);
+	for(i = 0; tokenized[i] != NULL; i++)
+		printf("%s\n", tokenized[i]);
+	token_to_list(tokenized);
 	return (0);
-}
+}*/
 /**
  *
  *
@@ -53,10 +50,6 @@ char *_getenv(const char *name)
 	
 	envtoken[0] = strtok(environ[i], "=");
 	envtoken[1] = strtok(NULL, "=");
-
-	for(i = 0; i < 2; i++)
-		free(envtoken[i]);
-	free(envtoken);
 
 	targetenv = envtoken[1];
 
@@ -86,15 +79,15 @@ char **tokenize_path(void)
  *
  *
  */
-path_d **token_to_list(char **tokens)
+path_d *token_to_list(char **tokens)
 {
 	unsigned int i;
-	path_d **fNode;
+	path_d *fNode;
 
+	fNode = NULL;
 	for(i = 0; tokens[i] != NULL; i++)
 	{
-		add_node((*(&fNode)), tokens[i]);
-		printf("%s\n", (*(fNode))->directory);
+		fNode = add_node(&fNode, tokens[i]);
 	}
 
 	return (fNode);
@@ -115,7 +108,7 @@ path_d *add_node(path_d **head, char *str)
 		return (NULL);
 
 	nNode->directory = str;
-	printf("%s", nNode->directory);
+	printf("%s\n", nNode->directory);
 	if (!nNode->directory)
 	{
 		free(nNode);
