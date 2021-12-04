@@ -10,25 +10,47 @@
 int main(int ac, char **av, char **env)
 {
 	char *input;
-	char **tokens;
-	int i;
+	char **tokens, **pathtokens;
+	tok *tokenlist;
+	path_d *pathdirs; 
 
 	UNUSED(ac);
 	UNUSED(av);
 	UNUSED(env);
 
+	pathtokens = tokenize_path();
+	pathdirs = pathtokens_to_list(pathtokens);
+
 	while (1)
 	{
+		input = NULL;
 		shell_prompt();
 		input = read_input();
+		if(input == NULL)
+			continue;
+		
+		input[strlen(input) - 1] = '\0';
+		tokens = tokenizer(input, " ");
+		/*i = 0;
+		while (pathtokens[i])
+		{
+			printf("%s\n", pathtokens[i]);
+			i++;
+		}
+		pathprint = pathdirs;
+		while (pathprint)
+                {
+                        printf("%s\n", pathprint->directory);
+			pathprint = pathprint->next;
+		} */
+		tokenlist = inputtoken_to_list(tokens);
 
-			input[strlen(input) - 1] = '\0';
-
-			tokens = tokenizer(input, " ");
-
-			for (i = 0; tokens[i] != NULL; i++)
-			printf("Token:%s. No.:%d\n", tokens[i], i);
-
-			run_exec(tokens);
+		while (tokenlist)
+		{
+			printf("%s\n", tokenlist->token);
+			tokenlist = tokenlist->next;
+		}
+		exec_identifier(pathdirs, tokens);	
+		 /*run_exec(tokenlist);*/
 	}
 }

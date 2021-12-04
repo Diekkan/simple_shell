@@ -44,18 +44,12 @@ char *_getenv(const char *name)
 
 	if(match != 0)
 		return (NULL);
-	envtoken = malloc(sizeof(char *) * 2);
-	if (envtoken == NULL)
-		return (NULL);
-	
-	envtoken[0] = strtok(environ[i], "=");
-	envtoken[1] = strtok(NULL, "=");
+
+	envtoken = tokenizer(environ[i], "=");
 
 	targetenv = envtoken[1];
-
 	return (targetenv);
 }
-
 /**
  *
  * 
@@ -67,10 +61,6 @@ char **tokenize_path(void)
 	char *path = _getenv("PATH");
 	char **pathdirs;
 
-	pathdirs = malloc(sizeof(char *) * 6);
-	if (pathdirs == NULL)
-		return (NULL);
-
 	pathdirs = tokenizer(path, ":");
 	return(pathdirs);
 }
@@ -79,15 +69,19 @@ char **tokenize_path(void)
  *
  *
  */
-path_d *token_to_list(char **tokens)
+path_d *pathtokens_to_list(char **tokens)
 {
 	unsigned int i;
 	path_d *fNode;
-
 	fNode = NULL;
-	for(i = 0; tokens[i] != NULL; i++)
+	i = 0;
+
+	fNode = add_node(&fNode, tokens[i]);
+	i++;
+	while (tokens[i])
 	{
-		fNode = add_node(&fNode, tokens[i]);
+		add_node_pathend(&fNode, tokens[i]);
+		i++;
 	}
 
 	return (fNode);
@@ -108,7 +102,7 @@ path_d *add_node(path_d **head, char *str)
 		return (NULL);
 
 	nNode->directory = str;
-	printf("%s\n", nNode->directory);
+	/* printf("%s\n", nNode->directory);*/
 	if (!nNode->directory)
 	{
 		free(nNode);
@@ -129,4 +123,40 @@ path_d *add_node(path_d **head, char *str)
 	}
 	lNode->next = nNode;
 	return (nNode);
+}
+
+path_d *add_node_pathend(path_d **head, char *str)
+{
+        path_d *nNode;
+        path_d *lNode;
+
+        if (!(head && str))
+                return (NULL);
+
+        nNode = malloc(sizeof(tok));
+        if (!nNode)
+                return (NULL);
+
+        nNode->directory = str;
+        /* printf("%s\n", nNode->directory);*/
+        if (!nNode->directory)
+        {
+                free(nNode);
+                return (NULL);
+        }
+        nNode->next = NULL;
+
+        if (!*head)
+        {
+                *head = nNode;
+                return (nNode);
+        }
+
+        lNode = *head;
+        while (lNode->next)
+        {
+                lNode = lNode->next;
+        }
+        lNode->next = nNode;
+        return (nNode);
 }
