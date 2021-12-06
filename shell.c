@@ -13,6 +13,7 @@ int main(int ac, char **av, char **env)
 	char **tokens, **pathtokens;
 	tok *tokenlist;
 	path_d *pathdirs; 
+	int builtin;
 
 	UNUSED(ac);
 	UNUSED(av);
@@ -31,6 +32,9 @@ int main(int ac, char **av, char **env)
 		
 		input[strlen(input) - 1] = '\0';
 		tokens = tokenizer(input, " ");
+		builtin = verify_builtin(tokens);
+		if(builtin == 1)
+			break;
 		/*i = 0;
 		while (pathtokens[i])
 		{
@@ -53,4 +57,6 @@ int main(int ac, char **av, char **env)
 		exec_identifier(pathdirs, tokens);	
 		 /*run_exec(tokenlist);*/
 	}
+
+	return (0);
 }

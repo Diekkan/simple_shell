@@ -33,6 +33,9 @@ path_d *pathtokens_to_list(char **tokens);
 tok *inputtoken_to_list(char **tokenin);
 int exec_identifier(path_d *pathlist, char **tokens);
 int run_exec(char *pathname, char **tokens);
+void env_builtin(void);
+int verify_builtin(char **tokens);
+void exit_builtin(void);
 
 /** useful functions */
 char *_getenv(const char *name);
