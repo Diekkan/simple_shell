@@ -12,21 +12,10 @@ char *read_input(void)
 	buffer = malloc(size * sizeof(char));
 	if (buffer == NULL)
 		return (NULL);
- 	chars = getline(&buffer, &size, stdin);
-	
-	if(chars == 1)
-		return(NULL);
-	
-	/** if (buffer[0] != 0)
-	{
-		printf("Escribiste: %s\n", buffer);
-		printf("Pude leer: %lu caracter(es)\n", characters);
-		putchar(10); 
-	}
-	else
-	{
+	chars = getline(&buffer, &size, stdin);
+
+	if (chars == 1)
 		return (NULL);
-	} */
 
 	return (buffer);
 }

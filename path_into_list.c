@@ -1,32 +1,9 @@
 #include "libshell.h"
-#include <stdio.h>
-
-char *_getenv(const char *name);
-char **tokenize_path(void);
-path_d *token_to_list(char **tokens);
-path_d *add_node(path_d **head, char *str);
 
 /**
- * main - prints the environment
- *
- * Return: Always 0.
- */
-/* int main(void)
-{
-	char **tokenized;
-	unsigned int i;
-	tokenized = malloc(sizeof(char *) * 1024);
-	tokenized = tokenize_path();
-
-	for(i = 0; tokenized[i] != NULL; i++)
-		printf("%s\n", tokenized[i]);
-	token_to_list(tokenized);
-	return (0);
-}*/
-/**
- *
- *
- *
+ *_getenv - function that gets the enviroment.
+ *@name: name of the variable.
+ *Return:the value of the variable.
  */
 char *_getenv(const char *name)
 {
@@ -35,14 +12,14 @@ char *_getenv(const char *name)
 	unsigned int i;
 	int match;
 
-	for(i = 0; environ[i] != NULL; i++)
+	for (i = 0; environ[i] != NULL; i++)
 	{
 		match = strncmp(environ[i], name, strlen(name));
 		if (match == 0)
 			break;
 	}
 
-	if(match != 0)
+	if (match != 0)
 		return (NULL);
 
 	envtoken = tokenizer(environ[i], "=");
@@ -51,8 +28,8 @@ char *_getenv(const char *name)
 	return (targetenv);
 }
 /**
- *
- * 
+ * tokenize_path - makes token out of a variable path.
+ * Return: token directory.
  *
  */
 
@@ -62,17 +39,19 @@ char **tokenize_path(void)
 	char **pathdirs;
 
 	pathdirs = tokenizer(path, ":");
-	return(pathdirs);
+	return (pathdirs);
 }
 
 /**
- *
- *
+ * pathtoken_to_list - makes a linked list of directories.
+ * @tokens: recibes directories.
+ * Return: a pointer to the start of the list.
  */
 path_d *pathtokens_to_list(char **tokens)
 {
 	unsigned int i;
 	path_d *fNode;
+
 	fNode = NULL;
 	i = 0;
 
@@ -87,7 +66,10 @@ path_d *pathtokens_to_list(char **tokens)
 	return (fNode);
 }
 /**
- *
+ * add_node - adds a node in the begining.
+ * @head: memory address where is saved.
+ * @str: string recibed in the node.
+ * Return: a pointer to the list.
  */
 
 path_d *add_node(path_d **head, char *str)
@@ -102,7 +84,7 @@ path_d *add_node(path_d **head, char *str)
 		return (NULL);
 
 	nNode->directory = str;
-	/* printf("%s\n", nNode->directory);*/
+
 	if (!nNode->directory)
 	{
 		free(nNode);
@@ -124,39 +106,44 @@ path_d *add_node(path_d **head, char *str)
 	lNode->next = nNode;
 	return (nNode);
 }
-
+/**
+ * add_node - adds a node in the begining.
+ * @head: memory address where is saved.
+ * @str: string recibed in the node.
+ * Return: a pointer to the list.
+ */
 path_d *add_node_pathend(path_d **head, char *str)
 {
-        path_d *nNode;
-        path_d *lNode;
+	path_d *nNode;
+	path_d *lNode;
 
-        if (!(head && str))
-                return (NULL);
+	if (!(head && str))
+	return (NULL);
 
-        nNode = malloc(sizeof(tok));
-        if (!nNode)
-                return (NULL);
+	nNode = malloc(sizeof(tok));
+	if (!nNode)
+	return (NULL);
 
-        nNode->directory = str;
-        /* printf("%s\n", nNode->directory);*/
-        if (!nNode->directory)
-        {
-                free(nNode);
-                return (NULL);
-        }
-        nNode->next = NULL;
+	nNode->directory = str;
 
-        if (!*head)
-        {
-                *head = nNode;
-                return (nNode);
-        }
+	if (!nNode->directory)
+	{
+		free(nNode);
+		return (NULL);
+	}
+	nNode->next = NULL;
 
-        lNode = *head;
-        while (lNode->next)
-        {
-                lNode = lNode->next;
-        }
-        lNode->next = nNode;
-        return (nNode);
+	if (!*head)
+	{
+		*head = nNode;
+		return (nNode);
+	}
+
+	lNode = *head;
+	while (lNode->next)
+	{
+		lNode = lNode->next;
+	}
+	lNode->next = nNode;
+	return (nNode);
 }

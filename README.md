@@ -1,1 +1,4 @@
-this is going to be the readme file. just is waiting to be edited.
+# A simple shell.
+
+###### hsh 
+hsh is a impleme:

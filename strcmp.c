@@ -1,10 +1,10 @@
 #include "libshell.h"
 
 /**
- * _strcmp - string compare
+ * _strncmp - string compare
  *@s1: string to be compared
  *@s2: string 2
- *
+ *@n: number variable.
  * Return: difference between ascii or 0
  */
 
