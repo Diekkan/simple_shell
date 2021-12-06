@@ -11,8 +11,8 @@ int exec_identifier(path_d *pathlist, char **tokens)
 	int isdir, isdir2, findfile;
 	struct stat st;
 
-	isdir = strncmp(command, "/", 1);
-	isdir2 = strncmp(command, ".", 1);
+	isdir = _strncmp(command, "/", 1);
+	isdir2 = _strncmp(command, ".", 1);
 
 	if (isdir == 0 || isdir2 == 0)
 	{
@@ -22,10 +22,9 @@ int exec_identifier(path_d *pathlist, char **tokens)
 
 	while(directory)
 	{
-		possibledir = strdup(directory->directory);
-		possibledir = strcat(possibledir, "/");
-		possibledir = strcat(possibledir, command);
-		/* printf("%s\n", possibledir);*/
+		possibledir = _strdup(directory->directory);
+		possibledir = _strncat(possibledir, "/", 1);
+		possibledir = _strncat(possibledir, command, strlen(command));
 		findfile = stat(possibledir, &st);
 		if (findfile == 0)
 		{

@@ -12,7 +12,6 @@ int main(int ac, char **av, char **env)
 {
 	char *input;
 	char **tokens, **pathtokens;
-	tok *tokenlist;
 	path_d *pathdirs;
 	int builtin;
 
@@ -36,16 +35,11 @@ int main(int ac, char **av, char **env)
 		builtin = verify_builtin(tokens);
 		if (builtin == 1)
 			break;
-		tokenlist = inputtoken_to_list(tokens);
-
-		while (tokenlist)
-		{
-			printf("%s\n", tokenlist->token);
-			tokenlist = tokenlist->next;
-		}
 		exec_identifier(pathdirs, tokens);
 
 	}
 
+	free_list(pathdirs);
 	return (0);
+
 }

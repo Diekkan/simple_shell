@@ -120,7 +120,7 @@ path_d *add_node_pathend(path_d **head, char *str)
 	if (!(head && str))
 	return (NULL);
 
-	nNode = malloc(sizeof(tok));
+	nNode = malloc(sizeof(path_d));
 	if (!nNode)
 	return (NULL);
 
