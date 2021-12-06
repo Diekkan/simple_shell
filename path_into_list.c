@@ -63,6 +63,7 @@ path_d *pathtokens_to_list(char **tokens)
 		i++;
 	}
 
+	free_array(tokens, 1024);
 	return (fNode);
 }
 /**

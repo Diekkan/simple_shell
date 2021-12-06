@@ -11,9 +11,10 @@ char **tokenizer(char *buffer, char *separator)
 	int i = 0;
 	char **tokenized;
 	char *token;
+	size_t size = 1024;
 
 	token = strtok(buffer, separator);
-	tokenized = malloc(sizeof(char *) * 1024);
+	tokenized = malloc(sizeof(char *) * size);
 
 	while (token)
 	{

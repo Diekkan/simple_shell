@@ -13,7 +13,7 @@ int main(int ac, char **av, char **env)
 	char *input;
 	char **tokens, **pathtokens;
 	path_d *pathdirs;
-	int builtin;
+	int builtin, isaty = 1;
 
 	UNUSED(ac);
 	UNUSED(av);
@@ -22,24 +22,28 @@ int main(int ac, char **av, char **env)
 	pathtokens = tokenize_path();
 	pathdirs = pathtokens_to_list(pathtokens);
 
-	while (1)
+	while (isaty == 1)
 	{
-		input = NULL;
-		shell_prompt();
+		isaty = isatty(STDIN_FILENO);
+		if(isaty == 1)
+		{	
+			write(STDOUT_FILENO, "$>", 2);
+		}
+		else
+		{
+			isaty = 0;
+		}
 		input = read_input();
 		if (input == NULL)
 			continue;
-
-		input[strlen(input) - 1] = '\0';
 		tokens = tokenizer(input, " ");
 		builtin = verify_builtin(tokens);
 		if (builtin == 1)
-			break;
+				break;
 		exec_identifier(pathdirs, tokens);
-
+		free(input);
 	}
 
-	free_list(pathdirs);
 	return (0);
 
 }

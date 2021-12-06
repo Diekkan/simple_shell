@@ -12,10 +12,15 @@ char *read_input(void)
 	buffer = malloc(size * sizeof(char));
 	if (buffer == NULL)
 		return (NULL);
+
 	chars = getline(&buffer, &size, stdin);
 
 	if (chars == 1)
 		return (NULL);
-
+	if (chars == -1)
+		exit(1);
+	
+	buffer[_strlen(buffer) - 1] = '\0';
+	
 	return (buffer);
 }

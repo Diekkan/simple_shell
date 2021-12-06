@@ -29,12 +29,16 @@ int exec_identifier(path_d *pathlist, char **tokens)
 		if (findfile == 0)
 		{
 			run_exec(possibledir, tokens);
+			free(possibledir);
 			break;
 		}
 		directory = directory->next;
 	}
 	if (findfile != 0)
+	{
+		free(possibledir);
 		perror("Error");
+	}
 	return (0);
 }
 

@@ -48,5 +48,6 @@ tok *add_node_end(tok **head, char *str);
 char *_strdup(char *str);
 char *_strncat(char *dest, char *src, int n);
 void free_list(path_d *head);
+void free_array(char **strings, int size);
 
 #endif
