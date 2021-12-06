@@ -16,7 +16,7 @@ to excute.
 
 to exit write .... command 
 
-##builts - in
+## builts - in
 
 
-##functions used
+## functions used
