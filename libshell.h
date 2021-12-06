@@ -26,7 +26,6 @@ extern char **environ;
 void shell_prompt(void);
 char *read_input(void);
 char **tokenizer(char *buffer, char *separator);
-char *_getenv(const char *name);
 char **tokenize_path(void);
 char *find_exec();
 path_d *pathtokens_to_list(char **tokens);
@@ -38,7 +37,7 @@ int verify_builtin(char **tokens);
 void exit_builtin(void);
 
 /** useful functions */
-char *_getenv(const char *name);
+char *_getenv(char *name);
 int _strncmp(char *s1, char *s2, int n);
 int _strlen(char *str);
 path_d *add_node(path_d **head, char *str);
@@ -48,6 +47,8 @@ tok *add_node_end(tok **head, char *str);
 char *_strdup(char *str);
 char *_strncat(char *dest, char *src, int n);
 void free_list(path_d *head);
-void free_array(char **strings, int size);
+void free_array(char **strings);
+int _strcmp(char *s1, char *s2);
+char *_strstr(char *haystack, char *needle);
 
 #endif

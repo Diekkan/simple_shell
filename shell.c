@@ -1,5 +1,6 @@
 #include "libshell.h"
 #define UNUSED(x) (void)(x)
+
 /**
  * main - our shell main function.
  * @ac: variable counter.
@@ -44,6 +45,9 @@ int main(int ac, char **av, char **env)
 		free(input);
 	}
 
+	free_list(pathdirs);
+	free(tokens);
+	free(pathtokens);
 	return (0);
 
 }

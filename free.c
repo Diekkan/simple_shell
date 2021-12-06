@@ -5,11 +5,11 @@
  *@strings: string array
  *@size: size of array allocated.
  */
-void free_array(char **strings, int size)
+void free_array(char **strings)
 {
 	int i;
 
-	for(i = 0; i <= size; i++)
+	for(i = 0; strings[i] != NULL; i++)
 	{
 		free(strings[i]);
 	}

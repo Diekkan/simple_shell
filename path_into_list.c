@@ -5,25 +5,24 @@
  *@name: name of the variable.
  *Return:the value of the variable.
  */
-char *_getenv(const char *name)
+char *_getenv(char *name)
 {
 	char **envtoken;
 	char *targetenv;
 	unsigned int i;
-	int match;
+
 
 	for (i = 0; environ[i] != NULL; i++)
 	{
-		match = strncmp(environ[i], name, strlen(name));
-		if (match == 0)
+		targetenv = _strstr(environ[i], name);
+		if (targetenv != NULL)
 			break;
 	}
 
-	if (match != 0)
+	if (targetenv == NULL)
 		return (NULL);
 
 	envtoken = tokenizer(environ[i], "=");
-
 	targetenv = envtoken[1];
 	return (targetenv);
 }
@@ -62,8 +61,6 @@ path_d *pathtokens_to_list(char **tokens)
 		add_node_pathend(&fNode, tokens[i]);
 		i++;
 	}
-
-	free_array(tokens, 1024);
 	return (fNode);
 }
 /**
