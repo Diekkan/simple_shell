@@ -18,5 +18,10 @@ to exit write .... command
 
 ## builts - in
 
+###env
+Print the environment.
+ 
+###exit
+exit the shell, closing the programm.
 
 ## functions used

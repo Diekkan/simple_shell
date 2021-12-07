@@ -1,0 +1,34 @@
+.TH man 1 "december 8, 2021" "1.0" "Shell man page"
+.SH NAME
+.B poner nombre hsh supongo
+- A extremly simple UNIX command line interpreter.
+.SH SYNOPSIS
+- This program can interpret and execute commands lines arguments readed from the standard input.
+.SH DESCRIPTION
+The program reads lines from a file or the terminal line. If the line is valid the command be executed. 
+
+.SH USAGE
+All the files must be compiled with "gcc -Wall -Werror -Wextra -pedantic -std=gnu89 *.c -o hsh".
+
+Once compiled, to start the program, run:
+.br
+$ ./hsh
+
+To exit the program, run:
+.br
+hsh $ exit <--este comand es correcto
+
+.SH BUILT-INS
+built-ins supported by the hsh shell:
+
+.B env - 
+Print the environment.
+
+.B exit- 
+exit the shell, closing the programm. 
+
+.SH BUGS
+No known bugs.
+.SH AUTHOR
+Diego Merentiel, Felipe Pérez
+
