@@ -28,14 +28,14 @@ exit the shell, closing the programm.
 
 ## functions used
 
-*read_input
-*tokenizer
-*tokenize_path
-*find_exec
-*pathtokens_to_list
-*inputtoken_to_list
-*exec_identifier
-*run_exec
-*env_builtin
-*verify_builtin
-*exit_builtin
+* read_input
+* tokenizer
+* tokenize_path
+* find_exec
+* pathtokens_to_list
+* inputtoken_to_list
+* exec_identifier
+* run_exec
+* env_builtin
+* verify_builtin
+* exit_builtin
