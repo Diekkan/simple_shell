@@ -43,7 +43,6 @@ char **tokenize_path(void)
 
 /**
  * pathtoken_to_list - makes a linked list of directories.
- * @tokens: recibes directories.
  * Return: a pointer to the start of the list.
  */
 path_d *pathtokens_to_list(void)

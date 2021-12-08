@@ -3,9 +3,6 @@
 
 /**
  * main - our shell main function.
- * @ac: variable counter.
- * @av: variable vector.
- * @env: variable envairoment.
  * Return: 0.
  */
 
