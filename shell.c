@@ -1,5 +1,4 @@
 #include "libshell.h"
-#define UNUSED(x) (void)(x)
 
 /**
  * main - our shell main function.
@@ -19,17 +18,16 @@ int main(void)
 		if (isatty(STDIN_FILENO))
 			write(STDOUT_FILENO, "$>", 2);
 		input = read_input();
-		if (input == NULL || _strncmp(input, "exit", 4) == 0)
+		if (input == NULL || _strcmp(input, "exit") == 0)
 		{
 			free(input);
 			break;
 		}
-		if (_strncmp(input, "\n", 1) == 0 ||
-		_strncmp(input, "env", 3) == 0)
+		if (_strcmp(input, "\n") == 0 ||
+		_strcmp(input, "env") == 0)
 		{
-			if (_strncmp(input, "env", 3) == 0)
+			if (_strcmp(input, "env") == 0)
 				env_builtin();
-
 			free(input);
 			continue;
 		}

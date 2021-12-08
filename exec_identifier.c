@@ -83,7 +83,7 @@ void env_builtin(void)
 
 /**
  *is_exec - look for a identifier if found the identifier executes.
- *@pathlist:path variables
+ *@path:path variables
  *@tokens:input token.
  *Return: 0.
  */

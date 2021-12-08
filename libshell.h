@@ -46,5 +46,6 @@ void free_list(path_d *head);
 void free_array(char **strings, int size);
 int _strcmp(char *s1, char *s2);
 char *_strstr(char *haystack, char *needle);
+int _strcmp(char *s1, char *s2);
 
 #endif
