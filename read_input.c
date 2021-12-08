@@ -5,15 +5,11 @@
  */
 char *read_input(void)
 {
-	char *buffer;
-	size_t size = 1024;
 	int chars;
+	char *buffer = NULL;
+	size_t i = 0;
 
-	buffer = malloc(size * sizeof(char));
-	if (buffer == NULL)
-		return (NULL);
-
-	chars = getline(&buffer, &size, stdin);
+	chars = getline(&buffer, &i, stdin);
 
 	if (chars == -1)
 	{
