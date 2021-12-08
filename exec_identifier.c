@@ -65,33 +65,7 @@ int run_exec(char *pathname, char **tokens)
 	wait(&status);
 	return (0);
 }
-/**
- *verify_builtin - verify builtin existence.
- *@tokens: tokens pointer.
- *Return: 0 in case of success -1 if fail.
- */
 
-int verify_builtin(char **tokens)
-{
-	int exit, env;
-
-	exit = _strncmp(tokens[0], "exit", 4);
-
-	if (exit == 0)
-	{
-		return (1);
-	}
-
-	env = _strncmp(tokens[0], "env", 3);
-
-	if (env == 0)
-	{
-		env_builtin();
-		return (0);
-	}
-
-	return (-1);
-}
 /**
  *env_builtin - print enviroment.
  */

@@ -46,9 +46,10 @@ char **tokenize_path(void)
  * @tokens: recibes directories.
  * Return: a pointer to the start of the list.
  */
-path_d *pathtokens_to_list(char **tokens)
+path_d *pathtokens_to_list(void)
 {
 	unsigned int i;
+	char **tokens = tokenize_path();
 	path_d *fNode;
 
 	fNode = NULL;

@@ -16,6 +16,8 @@ char **tokenizer(char *buffer, char *separator)
 
 	token = strtok(buffer, separator);
 	tokenized = malloc(sizeof(char *) * size);
+	if (tokenized == NULL)
+		return (NULL);
 
 	while (token)
 	{
@@ -25,7 +27,6 @@ char **tokenizer(char *buffer, char *separator)
 	}
 
 	tokenized[i] = NULL;
-	free(token);
 	return (tokenized);
 }
 
@@ -35,14 +36,14 @@ char **tokenizer(char *buffer, char *separator)
  */
 void free_list(path_d *head)
 {
-	path_d *current = head, *next;
+	path_d *next;
 
-	while (current)
+	while (head)
 	{
-		next = current->next;
-		free(current->directory);
-		free(current);
-		current = next;
+		next = head->next;
+		free(head->directory);
+		free(head);
+		head = next;
 	}
 
 	head = NULL;

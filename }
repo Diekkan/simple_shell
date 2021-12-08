@@ -12,37 +12,38 @@
 int main(void)
 {
 	char *input;
-	char **tokens;
+	char **tokens, **pathtokens;
 	path_d *pathdirs;
-	int isaty = 1;
+	int builtin, isaty = 1;
 
-	pathdirs = pathtokens_to_list();
+	pathtokens = tokenize_path();
+	pathdirs = pathtokens_to_list(pathtokens);
 
 	while (isaty == 1)
 	{
 		isaty = isatty(STDIN_FILENO);
 		if (isaty == 1)
+		{
 			write(STDOUT_FILENO, "$>", 2);
+		}
 		else
 		{
 			isaty = 0;
 		}
 		input = read_input();
-		if (input == NULL || _strncmp(input, "exit", 4) == 0)
-			break;
-		if (_strncmp(input, "\n", 1) == 0 ||
-		_strncmp(input, "env", 3) == 0)
-		{
-			if (_strncmp(input, "env", 3) == 0)
-				env_builtin();
-
+		if (input == NULL)
 			continue;
-		}
 		tokens = tokenizer(input, " ");
+		builtin = verify_builtin(tokens);
+			if (builtin == 1)
+				break;
 		exec_identifier(pathdirs, tokens);
-		free_array(tokens, 1024);
+		free(input);
 	}
 
+	free_list(pathdirs);
+	free(pathdirs);
+	free(pathtokens);
 	return (0);
 
 }

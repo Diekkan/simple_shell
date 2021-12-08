@@ -5,13 +5,15 @@
  *@strings: string array
  *
  */
-void free_array(char **strings)
+void free_array(char **strings, int size)
 {
 	int i;
+	char *token;
 
-	for (i = 0; strings[i] != NULL; i++)
+	for (i = 0; i < size; i++)
 	{
-		free(strings[i]);
+		token = strings[i];
+		free(token);
 	}
 	free(strings);
 }

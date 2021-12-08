@@ -28,7 +28,7 @@ char *read_input(void);
 char **tokenizer(char *buffer, char *separator);
 char **tokenize_path(void);
 char *find_exec();
-path_d *pathtokens_to_list(char **tokens);
+path_d *pathtokens_to_list(void);
 tok *inputtoken_to_list(char **tokenin);
 int exec_identifier(path_d *pathlist, char **tokens);
 int run_exec(char *pathname, char **tokens);
@@ -47,7 +47,7 @@ tok *add_node_end(tok **head, char *str);
 char *_strdup(char *str);
 char *_strncat(char *dest, char *src, int n);
 void free_list(path_d *head);
-void free_array(char **strings);
+void free_array(char **strings, int size);
 int _strcmp(char *s1, char *s2);
 char *_strstr(char *haystack, char *needle);
 

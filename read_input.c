@@ -15,12 +15,15 @@ char *read_input(void)
 
 	chars = getline(&buffer, &size, stdin);
 
-	if (chars == 1)
-		return (NULL);
 	if (chars == -1)
-		exit(1);
+	{
+		write(STDOUT_FILENO, "\n", 1);
+		free(buffer);
+		return (NULL);
+	}
 
-	buffer[_strlen(buffer) - 1] = '\0';
+	if (chars > 1)
+		buffer[_strlen(buffer) - 1] = '\0';
 
 	return (buffer);
 }
