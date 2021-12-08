@@ -7,7 +7,7 @@
  */
 char *_getenv(char *name)
 {
-	char **envtoken, *targetenv;
+	char **envtoken, *targetenv = NULL;
 	int comparison;
 	unsigned int i;
 

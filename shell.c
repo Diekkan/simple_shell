@@ -40,7 +40,6 @@ int main(void)
 		}
 		tokens = tokenizer(input, " ");
 		exec_identifier(pathdirs, tokens);
-		free_array(tokens, 1024);
 	}
 
 	return (0);
