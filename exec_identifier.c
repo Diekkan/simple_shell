@@ -59,7 +59,7 @@ int run_exec(char *pathname, char **tokens)
 	{
 		err = execve(pathname, tokens, NULL);
 		if (err == -1)
-			perror("Error");
+			perror(tokens[0]);
 	}
 
 	wait(&status);
@@ -120,7 +120,7 @@ int is_exec(char **path, char **tokens)
 	}
 	if (findfile != 0)
 	{
-		perror("Error");
+		perror(tokens[0]);
 		return (-1);
 	}
 	return (0);

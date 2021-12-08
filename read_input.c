@@ -13,7 +13,6 @@ char *read_input(void)
 
 	if (chars == -1)
 	{
-		write(STDOUT_FILENO, "\n", 1);
 		free(buffer);
 		return (NULL);
 	}

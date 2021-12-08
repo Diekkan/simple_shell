@@ -17,6 +17,7 @@ int main(void)
 	{
 		if (isatty(STDIN_FILENO))
 			write(STDOUT_FILENO, "$>", 2);
+
 		input = read_input();
 		if (input == NULL || _strcmp(input, "exit") == 0)
 		{
@@ -33,11 +34,9 @@ int main(void)
 		}
 		tokens = tokenizer(input, " ");
 		is_exec(pathtokens, tokens);
-
 		free(input);
 		free(tokens);
 	}
-
 	free(pathtokens);
 	return (0);
 }
