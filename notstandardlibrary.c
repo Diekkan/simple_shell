@@ -36,10 +36,10 @@ int _strncmp(char *s1, char *s2, int n)
 
 char *_strncat(char *dest, char *src, int n)
 {
-        int chs1;
-        int chs2;
+	int chs1;
+	int chs2;
 
-        for (chs1 = 0; dest[chs1] != '\0';)
+	for (chs1 = 0; dest[chs1] != '\0';)
 	{
 		chs1++;
 	}
@@ -85,7 +85,6 @@ char *_strdup(char *str)
 	{
 		i++;
 	}
-
 	return (p);
 }
 /**

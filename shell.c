@@ -26,8 +26,8 @@ int main(int ac, char **av, char **env)
 	while (isaty == 1)
 	{
 		isaty = isatty(STDIN_FILENO);
-		if(isaty == 1)
-		{	
+		if (isaty == 1)
+		{
 			write(STDOUT_FILENO, "$>", 2);
 		}
 		else
@@ -39,15 +39,11 @@ int main(int ac, char **av, char **env)
 			continue;
 		tokens = tokenizer(input, " ");
 		builtin = verify_builtin(tokens);
-		if (builtin == 1)
+			if (builtin == 1)
 				break;
 		exec_identifier(pathdirs, tokens);
 		free(input);
 	}
-
-	free_list(pathdirs);
-	free(tokens);
-	free(pathtokens);
 	return (0);
 
 }

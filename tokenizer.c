@@ -3,6 +3,7 @@
 /**
  * tokenizer - tokenizes the input received.
  *@buffer: string received from input.
+ *@separator: separetor character.
  *Return: returns an array of strings.
  */
 
@@ -24,12 +25,13 @@ char **tokenizer(char *buffer, char *separator)
 	}
 
 	tokenized[i] = NULL;
+	free(token);
 	return (tokenized);
 }
 
 /**
  * free_list -a function that frees a list_t list.
- *@head: first node.
+ * @head: first node.
  */
 void free_list(path_d *head)
 {

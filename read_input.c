@@ -19,8 +19,8 @@ char *read_input(void)
 		return (NULL);
 	if (chars == -1)
 		exit(1);
-	
+
 	buffer[_strlen(buffer) - 1] = '\0';
-	
+
 	return (buffer);
 }

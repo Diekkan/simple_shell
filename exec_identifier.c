@@ -1,12 +1,14 @@
 #include "libshell.h"
 /**
- *
- *
+ *exec_identifier - look for a identifier if found the identifier executes.
+ *@pathlist:path variables
+ *@tokens:input token.
+ *Return: 0.
  */
 int exec_identifier(path_d *pathlist, char **tokens)
 {
 	char *command = tokens[0];
-       	char *possibledir;
+	char *possibledir;
 	path_d *directory = pathlist;
 	int isdir, isdir2, findfile;
 	struct stat st;
@@ -20,7 +22,7 @@ int exec_identifier(path_d *pathlist, char **tokens)
 		return (0);
 	}
 
-	while(directory)
+	while (directory)
 	{
 		possibledir = _strdup(directory->directory);
 		possibledir = _strncat(possibledir, "/", 1);
@@ -43,9 +45,10 @@ int exec_identifier(path_d *pathlist, char **tokens)
 }
 
 /**
- *
- *
- *
+ *run_exec - run the executer.
+ *@pathname: name of the path.
+ *@tokens: tokens value.
+ *Return: 0.
  */
 int run_exec(char *pathname, char **tokens)
 {
@@ -54,7 +57,7 @@ int run_exec(char *pathname, char **tokens)
 
 	if (child_pid == 0)
 	{
-		err = execve(pathname, tokens , NULL);
+		err = execve(pathname, tokens, NULL);
 		if (err == -1)
 			perror("Error");
 	}
@@ -63,9 +66,9 @@ int run_exec(char *pathname, char **tokens)
 	return (0);
 }
 /**
- *
- *
- *
+ *verify_builtin - verify builtin existence.
+ *@tokens: tokens pointer.
+ *Return: 0 in case of success -1 if fail.
  */
 
 int verify_builtin(char **tokens)
@@ -74,14 +77,14 @@ int verify_builtin(char **tokens)
 
 	exit = _strncmp(tokens[0], "exit", 4);
 
-	if(exit == 0)
+	if (exit == 0)
 	{
 		return (1);
 	}
 
 	env = _strncmp(tokens[0], "env", 3);
 
-	if(env == 0)
+	if (env == 0)
 	{
 		env_builtin();
 		return (0);
@@ -90,15 +93,14 @@ int verify_builtin(char **tokens)
 	return (-1);
 }
 /**
- *
- *
+ *env_builtin - print enviroment.
  */
 
 void env_builtin(void)
 {
 	int i;
 
-	for(i = 0; environ[i] != NULL; i++)
+	for (i = 0; environ[i] != NULL; i++)
 	{
 		write(STDOUT_FILENO, environ[i], strlen(environ[i]));
 		write(STDOUT_FILENO, "\n", 1);
