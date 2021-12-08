@@ -14,7 +14,7 @@ char *_getenv(char *name)
 
 	for (i = 0; environ[i] != NULL; i++)
 	{
-		targetenv = _strstr(environ[i], name);
+		targetenv = strstr(environ[i], name);
 		if (targetenv != NULL)
 			break;
 	}
