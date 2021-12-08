@@ -35,6 +35,7 @@ int run_exec(char *pathname, char **tokens);
 void env_builtin(void);
 int verify_builtin(char **tokens);
 void exit_builtin(void);
+int is_exec(char **path, char **tokens);
 
 /** useful functions */
 char *_getenv(char *name);

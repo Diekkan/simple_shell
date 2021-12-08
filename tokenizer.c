@@ -41,7 +41,6 @@ void free_list(path_d *head)
 	while (head)
 	{
 		next = head->next;
-		free(head->directory);
 		free(head);
 		head = next;
 	}

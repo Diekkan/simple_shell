@@ -81,3 +81,68 @@ void env_builtin(void)
 	}
 }
 
+/**
+ *is_exec - look for a identifier if found the identifier executes.
+ *@pathlist:path variables
+ *@tokens:input token.
+ *Return: 0.
+ */
+int is_exec(char **path, char **tokens)
+{
+	char *command = tokens[0];
+	char *possibledir;
+	int isdir, isdir2, findfile, i = 0;
+	struct stat st;
+
+	isdir = _strncmp(command, "/", 1);
+	isdir2 = _strncmp(command, ".", 1);
+
+	if (isdir == 0 || isdir2 == 0)
+	{
+		run_exec(command, tokens);
+		return (0);
+	}
+
+	while (path[i])
+	{
+		possibledir = _strdup(path[i]);
+		possibledir = _strncat(possibledir, "/", 1);
+		possibledir = _strncat(possibledir, command, strlen(command));
+		findfile = stat(possibledir, &st);
+		if (findfile == 0)
+		{
+			run_exec(possibledir, tokens);
+			free(possibledir);
+			break;
+		}
+		free(possibledir);
+		i++;
+	}
+	if (findfile != 0)
+	{
+		perror("Error");
+		return (-1);
+	}
+	return (0);
+}
+
+/**
+ * _strncpy - a function that copies a string.
+ * @src: source string
+ * @dest: dest string
+ * @n: number of chars copied.
+ *
+ * Return: string dest.
+ */
+
+char *_strncpy(char *dest, char *src, int n)
+{
+	int i;
+
+	for (i = 0; i < n && src[i] != '\0'; i++)
+		dest[i] = src[i];
+	for (; i < n; i++)
+		dest[i] = '\0';
+
+	return (dest);
+}

@@ -7,7 +7,7 @@
  */
 char *_getenv(char *name)
 {
-	char **envtoken, *targetenv = NULL;
+	char *targetenv = NULL;
 	int comparison;
 	unsigned int i;
 
@@ -22,8 +22,9 @@ char *_getenv(char *name)
 	if (comparison != 0)
 		return (NULL);
 
-	envtoken = tokenizer(environ[i], "=");
-	targetenv = envtoken[1];
+	strtok(environ[i], "=");
+
+	targetenv = strtok(NULL, "=");
 	return (targetenv);
 }
 /**

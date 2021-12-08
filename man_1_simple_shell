@@ -1,6 +1,6 @@
 .TH man 1 "december 8, 2021" "1.0" "Shell man page"
 .SH NAME
-.B poner nombre hsh supongo
+.B Simple shell
 - A extremly simple UNIX command line interpreter.
 .SH SYNOPSIS
 - This program can interpret and execute commands lines arguments readed from the standard input.
