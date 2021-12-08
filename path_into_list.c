@@ -7,19 +7,19 @@
  */
 char *_getenv(char *name)
 {
-	char **envtoken;
-	char *targetenv;
+	char **envtoken, *targetenv;
+	int comparison;
 	unsigned int i;
 
 
 	for (i = 0; environ[i] != NULL; i++)
 	{
-		targetenv = strstr(environ[i], name);
-		if (targetenv != NULL)
+		comparison = strncmp(environ[i], name, 4);
+		if (comparison == 0)
 			break;
 	}
 
-	if (targetenv == NULL)
+	if (comparison != 0)
 		return (NULL);
 
 	envtoken = tokenizer(environ[i], "=");
