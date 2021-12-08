@@ -21,6 +21,8 @@ int main(void)
 		input = read_input();
 		if (input == NULL || _strcmp(input, "exit") == 0)
 		{
+			if (isatty(STDIN_FILENO))
+				write(STDOUT_FILENO, "\n", 1);
 			free(input);
 			break;
 		}
