@@ -14,19 +14,13 @@ int main(void)
 	char *input;
 	char **tokens;
 	path_d *pathdirs;
-	int isaty = 1;
 
 	pathdirs = pathtokens_to_list();
 
-	while (isaty == 1)
+	while (1)
 	{
-		isaty = isatty(STDIN_FILENO);
-		if (isaty == 1)
+		if (isatty(STDIN_FILENO))
 			write(STDOUT_FILENO, "$>", 2);
-		else
-		{
-			isaty = 0;
-		}
 		input = read_input();
 		if (input == NULL || _strncmp(input, "exit", 4) == 0)
 			break;
