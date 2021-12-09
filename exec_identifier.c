@@ -74,6 +74,7 @@ void env_builtin(void)
 {
 	int i = 0;
 
+	printf("\n");
 	while (environ[i])
 	{
 		printf("%s\n", environ[i]);
@@ -93,6 +94,9 @@ int is_exec(char **path, char **tokens)
 	char *possibledir;
 	int isdir, isdir2, findfile, i = 0;
 	struct stat st;
+
+	if (!path || !tokens)
+		return (-1);
 
 	isdir = _strncmp(command, "/", 1);
 	isdir2 = _strncmp(command, ".", 1);
