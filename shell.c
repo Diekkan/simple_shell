@@ -35,6 +35,11 @@ int main(void)
 			continue;
 		}
 		tokens = tokenizer(input, " ");
+		if (tokens == NULL)
+		{
+			free(input);
+			continue;
+		}
 		is_exec(pathtokens, tokens);
 		free(input);
 		free(tokens);

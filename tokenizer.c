@@ -15,6 +15,8 @@ char **tokenizer(char *buffer, char *separator)
 	size_t size = 1024;
 
 	token = strtok(buffer, separator);
+	if (token == NULL)
+		return (NULL);
 	tokenized = malloc(sizeof(char *) * size);
 	if (tokenized == NULL)
 		return (NULL);
