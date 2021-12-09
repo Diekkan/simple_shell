@@ -72,12 +72,12 @@ int run_exec(char *pathname, char **tokens)
 
 void env_builtin(void)
 {
-	int i;
+	int i = 0;
 
-	for (i = 0; environ[i] != NULL; i++)
+	while (environ[i])
 	{
-		write(STDOUT_FILENO, environ[i], strlen(environ[i]));
-		write(STDOUT_FILENO, "\n", 1);
+		printf("%s\n", environ[i]);
+		i++;
 	}
 }
 
