@@ -57,7 +57,7 @@ int run_exec(char *pathname, char **tokens)
 
 	if (child_pid == 0)
 	{
-		err = execve(pathname, tokens, NULL);
+		err = execve(pathname, tokens, environ);
 		if (err == -1)
 			perror(tokens[0]);
 	}
@@ -75,7 +75,7 @@ void env_builtin(void)
 	int i = 0;
 
 	printf("\n");
-	while (environ[i])
+	while (!environ[i])
 	{
 		printf("%s\n", environ[i]);
 		i++;
